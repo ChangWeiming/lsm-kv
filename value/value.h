@@ -15,6 +15,9 @@ public:
     std::string* Get() {
         return &s;
     }
+    int GetIsDeleted() {
+        return isDeleted;
+    }
     
 private:
     int isDeleted;

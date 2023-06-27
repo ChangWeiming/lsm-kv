@@ -3,8 +3,13 @@
 
 #include "sstable/indexinfo.h"
 
-void IndexInfo::AddIndexPair(std::pair<std::string, long long> p) {
-    idx.push_back(p);
+void IndexInfo::AddIndexPair(std::string k, long long p) {
+    idx.push_back(std::make_pair(k, p));
+}
+
+void IndexInfo::AddIndexPair(char* k, long long p) {
+    std::string s = k;
+    idx.push_back(std::make_pair(s, p));
 }
 
 std::pair<std::string, long long> IndexInfo::Get(const std::string &k,bool &isFind) {
@@ -29,4 +34,21 @@ std::pair<std::string, long long> IndexInfo::Get(const std::string &k,bool &isFi
 
     isFind = false;
     return std::pair<std::string, long long>();
+}
+
+bool IndexInfo::IterateAllKeys(std::pair<std::string, long long> &p) {
+    if(it == idx.end()) {
+        return false;
+    }
+    p = *it;
+    it++;
+    return true;
+}
+
+void IndexInfo::ResetIterate() {
+    it = idx.begin();
+}
+
+std::pair<std::string, long long> IndexInfo::GetByIndex(size_t i) {
+    return idx[i];
 }

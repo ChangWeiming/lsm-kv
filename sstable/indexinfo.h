@@ -3,8 +3,13 @@
 
 class IndexInfo {
 public:
-    void AddIndexPair(std::pair<std::string, long long> p);
+    void AddIndexPair(std::string k, long long p);
+    void AddIndexPair(char* k, long long p);
+    bool IterateAllKeys(std::pair<std::string, long long> &p);
+    void ResetIterate();
+    std::pair<std::string, long long> GetByIndex(size_t i);
     std::pair<std::string, long long> Get(const std::string &k, bool &isFind);
 private:
     std::vector< std::pair<std::string, long long> > idx;
-};
+    std::vector< std::pair<std::string, long long> >::iterator it;
+}

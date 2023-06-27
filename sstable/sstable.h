@@ -17,15 +17,20 @@
 */
 class SSTable {
 public:
-    SSTable(std::string _fp = "", long long level = 0, long long timestamp = 0);
-    static void SaveDataFromMemTable(std::shared_ptr<MemTable> m,const std::string &filePath);
+    SSTable(long long level = 0, long long timestamp = 0);
+    void FromMemTable(std::shared_ptr<MemTable> m,const std::string &filePath);
     void LoadMetaInfo();
     void LoadIndexInfo();
     void LoadMetaAndIndex();
+    void LoadData();
+    void MergeTable(std::shared_ptr<SSTable> s);
     void Get(const std::string &k);
+    std::shared_ptr< std::map<std::string, Value> > GetKV();
 private:
+    std::shared_ptr< std::map<std::string, Value> > kv;
     std::string filePath;
     MetaInfo meta;
     IndexInfo index;
+    bool isLoadIndex, isLoadMeta, isLoadData;
     long long level, timestamp;
 };

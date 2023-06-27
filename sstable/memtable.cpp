@@ -15,13 +15,7 @@ bool MemTable::Insert(const std::string &k, const Value &v) {
 }
 
 bool MemTable::Delete(const std::string &k) {
-    auto it = this->activeTable->find(k);
-    if (it == this->activeTable->end()) {
-        return this->Insert(k, Value("", 1));
-    } else {
-        this->activeTable->erase(it);
-    }
-    return true;
+    return this->Insert(k, Value("", 1));
 }
 
 Value MemTable::Get(const std::string &k, bool &isFind) {

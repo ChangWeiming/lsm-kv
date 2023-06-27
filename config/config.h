@@ -5,8 +5,9 @@ public:
     static Config* GetInstance();
     int GetMaxMemtable();
     std::string GetDataPath();
+    int GetMaxCompactionFile();
 private:
     Config();
-    int maxMemtable;
+    int maxMemtable, maxCompactionFile;
     std::string dataPath;
 };
