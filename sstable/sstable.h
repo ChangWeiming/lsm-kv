@@ -23,8 +23,11 @@ public:
     void LoadIndexInfo();
     void LoadMetaAndIndex();
     void LoadData();
+    void SaveFromMap(std::shared_ptr<std::map<std::string, Value>> m);
     void MergeTable(std::shared_ptr<SSTable> s);
-    void Get(const std::string &k);
+    void ReleaseKV();
+    void SaveMergedTable();
+    Value Get(const std::string &k, bool &isFind);
     std::shared_ptr< std::map<std::string, Value> > GetKV();
 private:
     std::shared_ptr< std::map<std::string, Value> > kv;

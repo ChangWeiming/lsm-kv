@@ -2,7 +2,7 @@
 
 class Value {
 public:
-    Value(const std::string &_s = "", int isDeleted = 0) {
+    Value(const std::string _s = "", int isDeleted = 0) {
         s = _s;
         isDeleted = 0;
     }

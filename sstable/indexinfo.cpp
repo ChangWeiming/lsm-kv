@@ -3,6 +3,9 @@
 
 #include "sstable/indexinfo.h"
 
+void IndexInfo::Clear() {
+    idx.clear();
+}
 void IndexInfo::AddIndexPair(std::string k, long long p) {
     idx.push_back(std::make_pair(k, p));
 }

@@ -6,7 +6,7 @@
 #include "config/config.h"
 
 bool MemTable::Insert(const std::string &k, const Value &v) {
-    if (this->activeTable->size() == GetConfigInstance()->GetMaxMemtable()) {
+    if (this->activeTable->size() == Config::GetInstance()->GetMaxMemtable()) {
         toImmutableTable();
     }
     assert(this->activeTable != nullptr);
@@ -40,5 +40,5 @@ bool MemTable::Update(const std::string &k, const Value &v) {
 }
 
 void MemTable::toImmutableTable() {
-    SSTableManager::GetInstance()->MemTable2SSTable(this->activeTable);
+    SSTableManager::GetInstance()->Memtable2SSTable(this->activeTable);
 }
