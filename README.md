@@ -1,2 +1,5 @@
 # lsm-kv
-kv db using lsm tree in cpp
+KV db using lsm tree in cpp, temporally in synchronous manner when using getting and  inserting.
+
+usage & test:
+
