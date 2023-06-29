@@ -1,3 +1,5 @@
+#ifndef INDEXINFO_H
+#define INDEXINFO_H
 #include <vector>
 #include <string>
 
@@ -14,3 +16,4 @@ private:
     std::vector< std::pair<std::string, long long> > idx;
     std::vector< std::pair<std::string, long long> >::iterator it;
 };
+#endif

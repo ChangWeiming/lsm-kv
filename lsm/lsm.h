@@ -1,3 +1,5 @@
+#ifndef LSM_H
+#define LSM_H
 #include <string>
 #include <memory>
 
@@ -7,14 +9,14 @@
 
 class LSM {
 public:
-    Value Get(const std::string &k, bool &isFind);
+    std::string Get(const std::string &k);
     void Insert(const std::string &k, const std::string &v);
     void Delete(const std::string &k);
     void Update(const std::string &k, const std::string &v);
 
-    LSM(/* args */);
+    LSM();
     ~LSM();
 private:
     std::shared_ptr<MemTable> m;
 };
-
+#endif

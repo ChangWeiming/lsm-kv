@@ -1,5 +1,7 @@
-#include <string>
+#ifndef CONFIG_H
+#define CONFIG_H
 
+#include <string>
 class Config {
 public:
     static Config* GetInstance();
@@ -11,3 +13,4 @@ private:
     int maxMemtable, maxCompactionFile;
     std::string dataPath;
 };
+#endif

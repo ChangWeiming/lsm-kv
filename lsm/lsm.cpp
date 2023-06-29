@@ -1,12 +1,17 @@
 #include "lsm/lsm.h"
 
-Value LSM::Get(const std::string &k, bool &isFind) {
-    isFind = false;
+std::string LSM::Get(const std::string &k) {
+    bool isFind = false;
     auto r = m->Get(k, isFind);
     if (isFind == false) {
         r = SSTableManager::GetInstance()->Get(k, isFind);
     }
-    return r;
+
+    if (r.GetIsDeleted()) {
+        r.Set("");
+    }
+
+    return r.Get();
 }
 
 void LSM::Insert(const std::string &k, const std::string &v) {

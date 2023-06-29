@@ -1,3 +1,5 @@
+#ifndef SSTABLEMANAGER_H
+#define SSTABLEMANAGER_H
 #include <vector>
 #include <memory>
 #include <map>
@@ -14,7 +16,7 @@ public:
 private:
     //TODO: LRU to replace map in order to save memory
     //level, timestamp -> SSTable
-    std::map< std::pair<long long, long long>, std::shared_ptr<SSTable> > cache; 
+
     //s to represent SSTables on the disk, (level, timestamp)
     std::set< std::pair<long long, long long> > s;
 
@@ -22,3 +24,4 @@ private:
     void compaction();
     bool compactionLevel(int l);
 };
+#endif

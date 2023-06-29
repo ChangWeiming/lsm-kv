@@ -1,3 +1,5 @@
+#ifndef SSTABLE_H
+#define SSTABLE_H
 #include <string>
 #include <memory>
 
@@ -17,7 +19,7 @@
 */
 class SSTable {
 public:
-    SSTable(long long level = 0, long long timestamp = 0);
+    SSTable(long long level, long long timestamp);
     void FromMemTable(std::shared_ptr<MemTable> m,const std::string &filePath);
     void LoadMetaInfo();
     void LoadIndexInfo();
@@ -37,3 +39,5 @@ private:
     bool isLoadIndex, isLoadMeta, isLoadData;
     long long level, timestamp;
 };
+
+#endif

@@ -6,7 +6,9 @@ Config* Config::GetInstance() {
 }
 
 Config::Config() {
-
+    dataPath = "./";
+    maxMemtable = 3;
+    maxCompactionFile = 3;
 }
 
 std::string Config::GetDataPath() {
@@ -15,4 +17,8 @@ std::string Config::GetDataPath() {
 
 int Config::GetMaxMemtable() {
     return maxMemtable;
+}
+
+int Config::GetMaxCompactionFile() {
+    return maxCompactionFile;
 }
