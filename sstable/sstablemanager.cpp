@@ -9,6 +9,10 @@
 #include "sstable/sstablemanager.h"
 #include "utils/tablehelper.hpp"
 
+SSTableManager::SSTableManager() {
+
+}
+
 SSTableManager* SSTableManager::GetInstance() {
     static SSTableManager* m = new SSTableManager();
     return m;

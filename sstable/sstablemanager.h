@@ -14,6 +14,8 @@ public:
     void Memtable2SSTable(std::shared_ptr<std::map<std::string, Value>> m);
     Value Get(const std::string &k, bool &isFind);
 private:
+    //TODO: enhance initilization
+    SSTableManager();
     //TODO: LRU to replace map in order to save memory
     //level, timestamp -> SSTable
 
